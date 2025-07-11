@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Orbitron', sans-serif;
+}
+
+body {
+  background: radial-gradient(#1c1c1c, #000000);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 20px;         /* Reduced top padding */
+  height: 100dvh;            /* Better support on mobile */
+  overflow-y: auto;          /* Allow scroll if needed */
+}
+
+
+/* WRAPPER FLEX: Scoreboard + Game Box Side-by-Side */
+.score-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 90vw;
+  max-width: 800px;
+}
+
+/* SCOREBOARD STYLING */
+#scoreboard {
+  padding: 20px;
+  color: #00e676;
+  font-size: 1rem;
+  text-shadow: 0 0 5px #00c853;
+}
+
+#scoreboard p {
+  margin: 6px 0;
+}
+
+/* GAME BOX */
+.container {
+  background: #121212;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px #ff4500;
+  text-align: center;
+  border: 3px solid #ff6347;
+}
+
+h1 {
+  color: #ff5722;
+  font-size: 2.4rem;
+  margin-bottom: 15px;
+  text-shadow: 0 0 8px #ff7043;
+}
+
+#status {
+  font-size: 1.1rem;
+  margin: 20px 0;
+  color: #ffc107;
+  text-shadow: 0 0 10px #ffa726;
+}
+
+/* BOARD GRID */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 90px);
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.cell {
+  width: 90px;
+  height: 90px;
+  background: #1e1e1e;
+  border-radius: 10px;
+  font-size: 2.8rem;
+  color: #ffeb3b;
+  border: 2px solid #ff9800;
+  box-shadow: 0 0 10px #ff6f00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cell:hover {
+  background: #b71c1c;
+  box-shadow: 0 0 20px #ff5722;
+  transform: scale(1.05);
+}
+
+/* WINNING CELLS */
+.winner {
+  background-color: #e65100 !important;
+  color: #fff;
+  animation: flicker 1s infinite alternate;
+}
+
+@keyframes flicker {
+  0% { text-shadow: 0 0 5px #ff3d00; }
+  100% { text-shadow: 0 0 20px #ff6f00; }
+}
+
+/* RESET BUTTON */
+button#reset {
+  padding: 12px 25px;
+  background: #d84315;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #ff7043;
+  transition: 0.3s;
+}
+
+button#reset:hover {
+  background: #bf360c;
+  box-shadow: 0 0 20px #ff8a65;
+}
+
+/* POPUP WIN/TIE MESSAGE */
+.popup {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #1e1e1e;
+  padding: 25px 40px;
+  color: #ffeb3b;
+  font-size: 1.5rem;
+  border: 2px solid #ff9800;
+  box-shadow: 0 0 20px #ff6f00;
+  border-radius: 15px;
+  z-index: 10;
+  display: none;
+}
+
+.popup.show {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -60%); }
+  to   { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 500px) {
+  .board {
+    grid-template-columns: repeat(3, 70px);
+  }
+
+  .cell {
+    width: 70px;
+    height: 70px;
+    font-size: 2.2rem;
+  }
+
+  .score-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}
+#turn-indicator {
+  margin-bottom: 10px;
+  color: #ffc107;
+  font-size: 1rem;
+  font-weight: bold;
+  text-shadow: 0 0 6px #00e5ff;
+  
+}
+
+
+
+
